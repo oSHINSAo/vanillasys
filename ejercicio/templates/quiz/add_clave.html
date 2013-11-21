@@ -1,0 +1,39 @@
+{% extends "base_quiz.html" %}
+
+
+{% block title %}{% block Title2 %}Agregar Preguntas{% endblock %}{% endblock %}
+
+{% block active2 %}active{% endblock %}
+{% block content %}
+
+<h2>{{quiz}}</h2>
+
+
+
+<form action=".?idqui={{quiz.idqui}}" method="post">{% csrf_token %}
+	<input id="id_idqui" type="hidden" name="idqui" value={{quiz.idqui}} />
+<table style="font-family:'Droid Sans', sans-serif;font-size:16px;text-align:center;margin-left:auto;margin-right:auto;">
+{% for p in preguntas%}
+<tr><th>{{p}}</th></tr>
+{%for r in respuestas%}{%if p.idpre == r.idpre.idpre%}
+
+{% if r.idres in clave %}
+<tr><td><INPUT TYPE="radio" NAME="preg_{{p.idpre}}" VALUE="{{r.idres}}" checked>{{r}}</td></tr>
+{%else%}
+<tr><td><INPUT TYPE="radio" NAME="preg_{{p.idpre}}" VALUE="{{r.idres}}">{{r}}</td></tr>
+{%endif%}
+
+{%endif%}{%endfor%}<tr height=15><td></td></tr>{%endfor%}
+</table>	
+
+		<input type="submit" value="Generar" style="width:120px;height:40px;font-size:15px;font-family: 'Droid Sans', sans-serif;"/>
+	</form></td></tr></table>
+
+
+
+<br>{{mensaje}}
+	
+
+<a href="/quiz/add/"> REGRESAR </a>
+
+{% endblock %}

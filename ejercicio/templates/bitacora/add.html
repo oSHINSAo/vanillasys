@@ -1,0 +1,209 @@
+{% extends "base_bitacora.html" %}
+
+
+{% block title %}{% block Title2 %}Alta de Bit&aacutecora{% endblock %}{% endblock %}
+
+{% block active2 %}active{% endblock %}
+{% block content %}
+
+
+<!--
+
+<form action="." method="post">{% csrf_token %}
+		
+<table cellpadding=4px style="font-family:'Droid Sans', sans-serif;font-size:11px;text-align:left;margin-left:auto;margin-right:auto;"><tr><td>
+
+    {{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.creado.errors }}
+        <label for="id_creado">Creado Por:</label>   </td><td>
+        <i>{{request.user.username}}</i>   
+<input id="id_creado" type="hidden" name="creado" value="{{request.session.user_id}}" />
+
+    </div>
+</td></tr><tr><td>
+    <div class="fieldWrapper">
+        {{ form.im.errors }}
+        <label for="id_im">IM #:</label>   </td><td>
+        {{ form.im }}
+    </div>
+</td></tr><tr><td>
+    <div class="fieldWrapper">
+        {{ form.idcli.errors }}
+        <label for="id_idcli">Cliente:</label></td><td>
+        {{ form.idcli }}
+    </div>
+</td></tr><tr><td>
+    <div class="fieldWrapper">
+        {{ form.localidad.errors }}
+        <label for="id_localidad">Localidad:</label></td><td>
+        {{ form.localidad }}
+    </div>
+</td></tr><tr><td>
+    <div class="fieldWrapper">
+        {{ form.desc.errors }}
+        <label for="id_desc">Comentarios y <br>Acciones a Realizar:</label></td><td>
+        <textarea id="id_desc" rows="5" cols="70" name="desc"></textarea>
+    </div>
+</td></tr><tr><td>
+    <div class="fieldWrapper">
+        {{ form.idest.errors }}
+        <label for="id_idest">Estatus:</label></td><td>
+        {{ form.idest }}
+    </div>
+</td></tr><tr><td>
+    <div class="fieldWrapper">
+        {{ form.idacc.errors }}
+        <label for="id_idacc">Acceso:</label></td><td>
+        {{ form.idacc }}
+    </div>
+</td></tr><tr><td>
+    <div class="fieldWrapper">
+        {{ form.idtec.errors }}
+        <label for="id_idtec">Tecnolog&iacutea:</label></td><td>
+        {{ form.idtec }}
+    </div>
+</td></tr><tr><td>
+    <div class="fieldWrapper">
+        {{ form.idpro.errors }}
+        <label for="id_idpro">Proceder:</label></td><td>
+        {{ form.idpro }}
+    </div>
+</td></tr><tr><td>
+    <div class="fieldWrapper">
+        {{ form.idpri.errors }}
+        <label for="id_idpri">Prioridad:</label></td><td>
+        {{ form.idpri }}
+    </div>
+</td></tr>
+
+
+<tr><td colspan=2>
+		<input type="submit" value="Submit" style="width:120px;height:40px;font-size:15px;font-family: 'Droid Sans', sans-serif;"/>
+	</form></td></tr></table>
+-->
+<br>{{mensaje}}
+
+<form action="." method="post">{% csrf_token %}
+<table width="800" rules="all" cellpadding="10" style="text-align:center;font-size:11px;font-family: 'Droid Sans', sans-serif;border-collapse:collapse;margin-left:auto;margin-right:auto;">	
+<tr style="color:#AB1226">
+<th colspan=9 style="background-color:#D0D0D0;font-size:18px;">  Agregar a Bit&aacutecora </th>
+			</tr>
+<tr style="background-color:#A0A0A0;">
+<th>Creado</th><th>IM</th><th>Cliente</th><th>Localidad</th><th>Prioridad</th><th>Estatus</th><th>Acceso</th>
+</tr>
+
+
+			<tr style="background-color:#F0F0F0;">
+<td>{{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.creado.errors }}
+
+        <i>{{request.user.first_name}} {{request.user.last_name}}</i>   
+<input id="id_creado" type="hidden" name="creado" value="{{request.session.user_id}}" />
+
+    </div>
+</td>
+
+<td>     <div class="fieldWrapper">
+        {{ form.im.errors }}
+
+        {{ form.im }}
+    </div> 
+
+</td>
+
+<td>     <div class="fieldWrapper">
+        {{ form.idcli.errors }}
+
+        {{ form.idcli }}
+    </div> </td>
+
+
+
+
+<td> 
+    <div class="fieldWrapper">
+        {{ form.localidad.errors }}
+
+        {{ form.localidad }}
+    </div>
+
+</td>
+
+<td> 
+    <div class="fieldWrapper">
+        {{ form.idpri.errors }}
+
+        {{ form.idpri }}
+    </div>
+
+
+
+</td><td>    <div class="fieldWrapper">
+        {{ form.idest.errors }}
+       
+        {{ form.idest }}
+    </div>
+
+</td>
+<td>
+    <div class="fieldWrapper">
+        {{ form.idacc.errors }}
+
+        {{ form.idacc }}
+    </div>
+
+</td>
+
+</tr> 
+
+<tr style="background-color:#A0A0A0;">
+<th>Tecnologia</th><th>Proceder</th><th colspan=6> Comentarios y Acciones a Realizar </th>
+
+
+</tr>
+<tr style="background-color:#F0F0F0;">
+
+
+
+<td> 
+
+    <div class="fieldWrapper">
+        {{ form.idtec.errors }}
+
+        {{ form.idtec }}
+    </div>
+ </td>
+
+<td>
+
+    <div class="fieldWrapper">
+        {{ form.idpro.errors }}
+
+        {{ form.idpro }}
+    </div>
+ </td>
+
+
+
+<td colspan=6>
+
+    <div class="fieldWrapper">
+        {{ form.desc.errors }}
+
+        <textarea id="id_desc" rows="5" cols="80" name="desc"></textarea>
+    </div>
+
+<input type="submit" value="AGREGAR" style="width:120px;height:40px;font-size:15px;font-family: 'Droid Sans', sans-serif;"/>
+
+</td>
+</tr>
+
+</form>							
+</table>
+
+
+	
+
+{% endblock %}

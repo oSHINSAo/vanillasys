@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>{% block title%}{%endblock%}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css" media="screen">
+
+@font-face { 
+font-family: "ds"; 
+src: url(/media_axtel/fonts/digital-7.ttf),
+src: url(/media_axtel/fonts/digital-7.oet); 
+} 
+
+</style>
+<link rel="stylesheet" type="text/css" href="/media_axtel/css/opindependencia.css"/>	
+	<script src="/media_axtel/js/jquery-1.10.1.js"></script>
+	<!--<script src="/media_axtel/cale/js/jquery-ui-1.10.2.custom.js"></script>-->
+
+<!-- Slide de imagenes -->
+<link rel="stylesheet" href="/media_axtel/liquidslider/css/animate.css"> <!-- Optional -->
+<link rel="stylesheet" href="/media_axtel/liquidslider/css/liquid-slider.css">
+
+
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<script src="/media_axtel/liquidslider/js/jquery.easing.1.3.js"></script>
+<script src="/media_axtel/liquidslider/js/jquery.touchSwipe.min.js"></script>
+<script src="/media_axtel/liquidslider/js/jquery.liquid-slider.min.js"></script>
+<script>
+/* If installing in the footer, you won't need $(function() {} */
+
+</script>
+
+
+{% block script%}{%endblock%}
+
+
+
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+   <style type="text/css" media="print">
+.rojo{background-color:#AB1226;border:0}
+.gris{background-color:gray;border:0}
+html{-webkit-print-color-adjust:exact;}
+    </style>
+
+<style type="text/css">
+
+
+
+.rojo{background-color:#AB1226;border:0}
+.gris{background-color:gray;border:0}
+
+html *
+{
+   font-family: Arial !important;
+}
+
+#footer
+{
+width:1180px;
+margin-left:auto;
+margin-right:auto;
+padding:10px;
+height:50px;
+font-family: 'Droid Sans', sans-serif;
+font-size:16px;
+text-align:center;
+background-color:#990000;
+color:white;
+}
+
+#background {
+    width: 100%; 
+    height: 100%; 
+    position: fixed; 
+    left: 0px; 
+    top: 0px; 
+    z-index: -1; /* Ensure div tag stays behind content; -999 might work, too. */
+}
+
+.stretch {
+    width:100%;
+    height:100%;
+}
+
+.box
+{
+	float: left;
+
+	position: relative;
+}
+
+.box .rotate
+	{
+		display: block;
+		writing-mode: tb-rl;
+		-webkit-transform: rotate(270deg);	
+		-moz-transform: rotate(270deg);
+		-ms-transform: rotate(270deg);
+		-o-transform: rotate(270deg);
+		transform: rotate(270deg);
+		position: absolute;
+		right: 5;
+		bottom: 110px;
+		font-size: 16px;
+	}
+
+
+table tr.odd {
+  background-color: #AAAAAA;
+}
+.bgimg {
+    background-image: url(http://148.245.236.21/media_axtel/images/gray_square2.jpg);
+}
+
+.bgimg2
+{
+width:287px;height:50px;
+	background-image: url(http://148.245.236.21/media_axtel/images/gray_square2.jpg);
+	transform:rotate(270deg);
+	-ms-transform:rotate(270deg);
+	-webkit-transform:rotate(270deg);
+	position:relative;
+	text-shadow: black -0.3em 0.3em 0.5em;
+
+{%if 'MSIE 8.0' in browser%}
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=6.123031769111886e-17, M12=1, M21=-1, M22=6.123031769111886e-17, SizingMethod='auto expand')";
+top:-733px;
+left:-61px;
+{%else%}
+top:119px;
+left:-180px;
+{%endif%}
+}
+
+.bgimg3
+{
+width:275px;height:50px;
+	background-image: url(http://148.245.236.21/media_axtel/images/gray_square2.jpg);
+	transform:rotate(270deg);
+	-ms-transform:rotate(270deg);
+	-webkit-transform:rotate(270deg);
+	position:relative;
+	text-shadow: black -0.3em 0.3em 0.5em;
+
+{%if 'MSIE 8.0' in browser%}
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=6.123031769111886e-17, M12=1, M21=-1, M22=6.123031769111886e-17, SizingMethod='auto expand')";
+top:-351px;
+left:-463px;
+{%else%}
+top:496px;
+left:-574px;
+{%endif%}
+}
+
+.bgimg4
+{
+width:275px;height:50px;
+	background-image: url(http://148.245.236.21/media_axtel/images/gray_square2.jpg);
+	transform:rotate(270deg);
+	-ms-transform:rotate(270deg);
+	-webkit-transform:rotate(270deg);
+	position:relative;
+	text-shadow: black -0.3em 0.3em 0.5em;
+
+{%if 'MSIE 8.0' in browser%}
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=6.123031769111886e-17, M12=1, M21=-1, M22=6.123031769111886e-17, SizingMethod='auto expand')";
+top:-401px;
+left:120px;
+{%else%}
+top:445px;
+left:15px;
+{%endif%}
+}
+
+.textrotate
+{
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=6.123031769111886e-17, M12=1, M21=-1, M22=6.123031769111886e-17, SizingMethod='auto expand')";
+margin-left:15px;
+margin-top:60px;
+}
+
+</style>
+
+</head>
+<body>
+<div id="background">
+    <img src="/media_axtel/img/gris1.jpg" class="stretch" alt="" />
+</div>
+
+<div id="cubierta" style="background-color:#ffffff;width:1200px;border:0px solid black;margin-left:auto;margin-right:auto;box-shadow:0px 0px 25px #000000;">
+<div id="title" style="width:1200px;height:40px;">
+<div style="height:80px;">
+<div style="float:left;width:80px;height:40px;"><img src="/media_axtel/images/axtellogo.png" border=0 width="70px" height="40px" style="margin-top:5px;"/></div>
+<div style="float:left;width:270px;height:35px;"><img src="/media_axtel/images/logobi.png" border=0 width="200px" height="20px" style="margin-top:15px;"/></div>
+<div style="float:left;width:660px;height:35px;text-align:center;font-size:24px;color:#990000;margin-top:0px;">
+<div style="width:848px;height:35px;background-color:#AB1226;border:0px solid #AB1226;color:white;margin-left:auto;margin-right:auto;text-align:center;">
+<div style="width:800px;height:35px;border:0px solid #AB1226;margin-left:auto;margin-right:auto;margin-top:4px;text-align:center;">
+{% block Title2 %}{% endblock %}
+</div>
+</div>
+</div>
+
+</div></div>
+
+{%if no_menu%}
+
+<div style="width:1200px;height:4px;background-color:#AB1226;font-size:0px;"></div>
+<div style="width:1200px;height:4px;background-color:white;font-size:0px;"></div>
+<div style="width:1200px;height:4px;background-color:gray;font-size:0px;"></div>
+<div style="width:1200px;height:4px;background-color:white;font-size:0px;"></div>
+<div style="width:1200px;height:4px;background-color:#AB1226;font-size:0px;"></div>
+<div style="width:1200px;height:4px;background-color:white;font-size:0px;"></div>
+{%else%}
+
+<div id="menu">
+<div id="boton" class="boton {%block active1%}{%endblock%}" onclick="location.href=('/opindependencia/add_attack')">Ataques</div>
+<div id="boton2" class="boton {%block active2%}{%endblock%}" onclick="location.href=('/opindependencia/add_cliente/')">Clientes</div>
+<div id="boton3" class="boton {%block active3%}{%endblock%}" onclick="location.href=('/opindependencia/add_status/')">Status</div>
+<div id="boton6" class="boton {%block active4%}{%endblock%}" onclick="location.href=('/opindependencia/add_accion/')">Acciones</div>
+<div id="boton4" class="boton {%block active5%}{%endblock%}" onclick="location.href=('/opindependencia/add_situacion/')">Situaciones</div>
+<div id="boton5" class="boton {%block active6%}{%endblock%}" onclick="location.href=('/opindependencia/alcance/')">Alcance</div>
+</div>
+
+{% endif %}
+<div align=center>
+{% block content%}{%endblock%}
+</div>
+
+
+
+
+
+
+
+<div id="footer">
+<p>Esta p&aacutegina fue dise&ntilde;ada y elaborada por Business Intelligence. &#169 2013. Contacto:  cdrodriguez@axtel.com.mx</p>
+</div></div><br>
+</body>
+</html>

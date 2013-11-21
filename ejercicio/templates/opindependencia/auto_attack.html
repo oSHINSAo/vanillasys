@@ -1,0 +1,15 @@
+<table style="padding:3px;width:715px;border-spacing:0;background-color:#fafafa;font-size:12px;text-align:center">	
+
+
+<tr style="font-size:16px;color:#ab1226;text-shadow: gray 0.1em 0.1em 0.2em">
+
+<th width=150px>Clientes_id</th>
+<th>Tipo de<br>ataque</th>
+<th>Consecuencia<br>del ataque</th>
+<th>Status</th>
+
+</tr>
+{% for a in attack %}
+<tr {% if forloop.counter|divisibleby:2 %}{% else %}class="odd"{% endif %}><td>{{a.idcli}}_{{a.idcla}}</td><td>{{a.idtip}}</td><td>{{a.consecuencia}}</td><td>{{a.idsta}}</td></tr>
+{%endfor%}
+</table>

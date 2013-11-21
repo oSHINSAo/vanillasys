@@ -1,0 +1,310 @@
+{% extends "base_op.html" %}
+
+
+{% block title %}{% block Title2 %} #opindependencia {% endblock %}{% endblock %}
+{% block script %}
+
+<script type="text/javascript">
+
+function auto_attack()
+{
+
+$.get('/opindependencia/auto_attack/', function(data) {
+
+    $('#attack').html(data);
+  });
+
+}
+auto_attack();
+var auto_refresh = setInterval(auto_attack, 5000);
+
+function auto_accion()
+{
+
+$.get('/opindependencia/auto_accion/', function(data) {
+
+    $('#accion').html(data);
+  });
+
+}
+auto_accion();
+var auto_refresh2 = setInterval(auto_accion, 5000);
+
+function auto_situacion()
+{
+
+$.get('/opindependencia/auto_situacion/', function(data) {
+
+    $('#situacion').html(data);
+  });
+
+}
+auto_situacion();
+var auto_refresh3 = setInterval(auto_situacion, 5000);
+
+function auto_clientes()
+{
+
+$.get('/opindependencia/auto_clientes/', function(data) {
+
+    $('#clientes').html(data);
+  });
+
+}
+auto_clientes();
+var auto_refresh4 = setInterval(auto_clientes, 5000);
+
+function auto_graficas()
+{
+/*alert('refresh graficas');*/
+$.get('/opindependencia/auto_graficas/', function(data) {
+
+
+    $('#graficas').empty();
+    $('#graficas').html(data);
+    $('#slider-id').liquidSlider();
+
+
+  });
+
+}
+auto_graficas();
+var auto_refresh5 = setInterval(auto_graficas, 60000);
+
+</script>
+{% endblock %}
+{% block content %}
+<div id="container" style="background-color:#ffffff;width:1200px;height:765px;">
+
+<div  style="height:280px;width:400px;float:left;border:0px solid black;">
+<table class="bgimg"  style="padding:0px;width:390px;border-spacing:0;font-size:12px;text-align:center"><tr style="font-size:20px;color:#ffffff;text-shadow: black 0.3em 0.3em 0.5em"><th colspan={{cols}}><i>En las Redes sociales</i></th></tr></table>
+<div id="twitter" style="background-color:#ffffff;height:250px;width:395px;float:left;">
+<!--
+<a class="twitter-timeline" href="https://twitter.com/search?q=%23anonymous+%23mexico" data-widget-id="377106524511797248">Tweets sobre "#anonymous #mexico"</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
+<a class="twitter-timeline" href="https://twitter.com/soyelqueteve" data-widget-id="377115091369353216">Tweets by @soyelqueteve</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+-->
+
+<a class="twitter-timeline" href="https://twitter.com/search?q=%23anonymous+OR+%23opindependencia+OR+%23anonymous+%23mexico" data-widget-id="377522037138284544">Tweets about "#anonymous OR #opindependencia OR #anonymous #mexico"</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
+
+</div>
+</div><!--
+<div style="width:288px;height:50px;background-color:gray;transform:rotate(270deg);-ms-transform:rotate(270deg);
+-webkit-transform:rotate(270deg);position:relative;top:119px;left:-176px;text-shadow: black -0.3em 0.3em 0.5em;border:0px solid black;">
+<div style="position:absolute;margin-top:8px;margin-left:20px;font-size:26px;color:#ffffff;">
+Clientes con actividad</div>
+</div>
+
+<div style="width:275px;height:50px;background-color:gray;transform:rotate(270deg);-ms-transform:rotate(270deg);
+-webkit-transform:rotate(270deg);position:relative;top:644px;left:-576px;text-shadow: black -0.3em 0.3em 0.5em;">
+<div style="position:absolute;margin-top:8px;margin-left:60px;font-size:30px;color:#ffffff;">
+Situaciones</div>
+</div>
+
+<div style="width:275px;height:50px;background-color:gray;transform:rotate(270deg);-ms-transform:rotate(270deg);
+-webkit-transform:rotate(270deg);position:relative;top:594px;left:15px;text-shadow: black -0.3em 0.3em 0.5em;">
+<div style="position:absolute;margin-top:8px;margin-left:75px;font-size:30px;color:#ffffff;">
+Acciones</div>
+</div>-->
+
+<div style="background-color:#ffffff;height:288px;width:750px;float:right;border:0px solid black;">
+<!--
+<table class="rotate" style="padding:0px;width:250px;border-spacing:0;background-color:#fafafa;font-size:12px;text-align:center"><tr bgcolor="#AB1226" style="font-size:30px;color:#ffffff;text-shadow: gray 0.1em 0.1em 0.2em"><th colspan={{cols}}><i>Clientes con actividad</i></th></tr></table>-->
+
+<div id="attack" style="background-color:#ffffff;height:280px;width:735px;float:left;overflow:auto;">
+
+
+<table style="padding:3px;width:715px;border-spacing:0;background-color:#fafafa;font-size:12px;text-align:center">	
+
+
+<tr style="font-size:16px;color:#ab1226;text-shadow: gray 0.1em 0.1em 0.2em">
+
+<th width=150px>Clientes_id</th>
+<th>Tipo de<br>ataque</th>
+<th>Consecuencia<br>del ataque</th>
+<th>Status</th>
+
+</tr>
+{% for a in attack %}
+<tr {% if forloop.counter|divisibleby:2 %}{% else %}class="odd"{% endif %}><td>{{a.idcli}}_{{a.idcla}}</td><td>{{a.idtip}}</td><td>{{a.consecuencia}}</td><td>{{a.idsta}}</td></tr>
+{%endfor%}
+</table>
+</div>
+</div>
+
+<div class="bgimg" style="width:1200px;height:130px;float:left;">
+<table style="padding:0px;width:1200px;border-spacing:0;font-size:12px;text-align:center"><tr bgcolor="#AB1226" style="font-size:16px;color:#ffffff;text-shadow: gray 0.1em 0.1em 0.2em"><th colspan={{cols}}><i>Clientes con alcance</i></th></tr></table>
+<div id ="clientes" style="height:110px;width:1200px;float:left;overflow:auto;">
+<!-- Tabla de Clientes Afectados -->
+
+<table style="padding:0px;width:1000px;border-spacing:0;background: transparent;font-size:12px;text-align:center">	
+
+
+
+<tr style="font-size:16px;color:#ab1226;text-shadow: black 0.1em 0.1em 0.2em">
+<th colspan=1>Clientes CP/SP</th>
+<th colspan=1>Clientes SP</th>
+<th colspan=1>Clientes sin Alcance</th>
+
+
+</tr>
+
+<tr><td valign="top">
+<table border=0 width="300"   cellpadding="1" style="text-align:center;">	
+{% for c in clientes %}
+{% if c.tipo == "Cliente CP/SP"%}
+<tr style="color:{%if c.idcli in list_id %}yellow{%else%}white{%endif%};">
+
+<td colspan=1>{{ c }}</td>
+</tr>
+{%endif%}
+{% endfor %}
+</table>
+
+
+</td><td valign="top">
+<table border=0 width="300"   cellpadding="1" style="text-align:center">	
+{% for c in clientes %}
+
+{% if c.tipo == "Cliente SP"%}
+<tr style="color:{%if c.idcli in list_id%}yellow{%else%}white{%endif%};">
+
+<td colspan=1>{{ c }}</td>
+</tr>
+{%endif%}
+{% endfor %}
+</table>
+</td><td valign="top">
+<table border=0 width="300"   cellpadding="1" style="text-align:center">	
+{% for c in clientes %}
+{% if c.tipo == "Fuera de alcance"%}
+<tr style="color:{%if c.idcli in list_id%}yellow{%else%}white{%endif%};">
+
+
+<td colspan=1>{{ c }}</td>
+</tr>
+{%endif%}
+{% endfor %}
+</table>
+</td></tr>
+
+
+</table>
+
+</div>
+
+</div>
+<div style="background-color:#AB1226;width:1200px;height:15px;float:left;">
+</div>
+
+
+<div style="background-color:#FFffff;height:300px;width:600px;float:left;border:0px solid black;">
+<!--<table style="padding:0px;width:600px;border-spacing:0;background-color:#fafafa;font-size:16px;text-align:center"><tr bgcolor="#AB1226" style="font-size:30px;color:#ffffff;text-shadow: gray 0.1em 0.1em 0.2em"><th colspan={{cols}}><i>Situaciones</i></th></tr></table>-->
+<div id="situacion" style="background-color:#ffffff;height:85px;width:540px;float:left;overflow:auto;margin-left:50px;margin-rigth:10px;">
+<table style="padding:0px;width:520px;border-spacing:0;background-color:#fafafa;font-size:12px;text-align:center">	
+
+
+<tr style="font-size:16px;color:#ab1226;text-shadow: gray 0.1em 0.1em 0.2em">
+
+<th colspan=1>Cliente_id</th>
+<th colspan=1>Situaci&oacute;n</th>
+
+</tr>
+{% for s in situacion %}
+<tr {% if forloop.counter|divisibleby:2 %}{% else %}class="odd"{% endif %}><td>{{s.idcla.idcli}}_{{s.idcla}}</td><td>{{s.situacion}}</td></tr>
+{%endfor%}
+</table>
+</div>
+
+<div id="graficas" style="background-color:#ffffff;height:200px;width:600px;float:left;">
+<!--<div id="grafica" style="background-color:#ffffff;height:255px;width:545px;float:left;overflow:auto;margin-left:40px;">
+-->
+<div style="background-color:#ffffff;height:200px;width:560px;float:left;margin-left:40px;">
+<div class="liquid-slider" id="slider-id" style="background-color:#ffffff;height:255px;width:540px;">
+{% for g in graficas%}
+     <div>
+          <!--<h2 class="title">{{g.idcla.idcli}}_{{g.idcla}}</h2>-->
+          <img src="/media_axtel/{{g.grafica}}" height= 210px width= 480 /><br>
+<a href="/media_axtel/{{g.grafica}}">{{g.idcla.idcli}}_{{g.idcla}}</a>
+     </div>
+
+
+{%endfor%}
+</div>
+
+</div>
+
+<!--
+{% for g in graficas%}
+<img src="/media_axtel/{{g.grafica}}" height= 210px width= 500 /><br>
+<a href="/media_axtel/{{g.grafica}}">{{g.idcla.idcli}}_{{g.idcla}}</a><br><br>
+{%endfor%}
+</div>-->
+</div>
+
+
+</div>
+
+<div style="background-color:#ffffff;height:275px;width:550px;float:left;">
+<!--<table style="padding:0px;width:600px;border-spacing:0;background-color:#fafafa;font-size:16px;text-align:center"><tr bgcolor="#AB1226" style="font-size:30px;color:#ffffff;text-shadow: gray 0.1em 0.1em 0.2em"><th colspan={{cols}}><i>Acciones</i></th></tr></table>-->
+<div id="accion" style="background-color:#ffffff;height:265px;width:540px;float:left;overflow:auto;margin-left:50px;margin-rigth:10px;">
+
+<table style="padding:0px;width:520px;border-spacing:0;background-color:#fafafa;font-size:12px;text-align:center">	
+
+<tr style="font-size:16px;color:#ab1226;text-shadow: gray 0.1em 0.1em 0.2em">
+
+<th colspan=1>Cliente_id</th>
+<th colspan=1>Acci&oacute;n</th>
+
+</tr>
+{% for a in accion %}
+<tr {% if forloop.counter|divisibleby:2 %}{% else %}class="odd"{% endif %}><td>{{a.idcla.idcli}}_{{a.idcla}}</td><td>{{a.accion}}</td></tr>
+{%endfor%}
+</table>
+</div>
+</div>
+<!--
+<div style="background-color:#aaaaaa;width:1200px;height:30px;float:left;">
+<table style="padding:0px;width:1200px;border-spacing:0;background-color:#fafafa;font-size:12px;text-align:center"><tr bgcolor="#AB1226" style="font-size:16px;color:#ffffff;text-shadow: gray 0.1em 0.1em 0.2em"><th colspan={{cols}}><i>Graficas</i></th></tr></table></div>
+
+<!--  Graficas 
+<div style="background-color:#ffffff;height:275px;width:600px;float:left;">
+<div id="grafica" style="background-color:#ffffff;height:255px;width:555px;float:left;overflow:auto;margin-left:10px;">
+{% for g in graficas%}
+<img src="/media_axtel/{{g.grafica}}" height= 215px width= 500 /><br>
+<a href="/media_axtel/{{g.grafica}}">{{g.idcla.idcli}}_{{g.idcla}}</a><br><br>
+{%endfor%}
+</div>
+</div>
+<div style="background-color:#ffffff;height:275px;width:600px;float:left;">
+<div id="grafica2" style="background-color:#ffffff;height:255px;width:555px;float:left;overflow:auto;margin-left:10px;">
+
+</div>
+</div>
+-->
+<div  class="bgimg2">
+<div {%if 'MSIE 8.0' in browser%}class="textrotate"{%endif%} style="position:absolute;margin-top:8px;margin-left:20px;font-size:26px;color:#ffffff;">
+Clientes con actividad</div>
+</div>
+
+ <div  class="bgimg3">
+<div {%if 'MSIE 8.0' in browser%}class="textrotate"{%endif%} style="position:absolute;{%if not 'MSIE 8.0' in browser%}margin-left:80px;margin-top:8px;{%endif%}font-size:30px;color:#ffffff;">
+Situaciones</div>
+</div>
+
+<div  class="bgimg4">
+<div {%if 'MSIE 8.0' in browser%}class="textrotate"{%endif%} style="{%if not 'MSIE 8.0' in browser%}margin-top:8px;margin-left:75px;{%endif%}position:absolute;font-size:30px;color:#ffffff;">
+Acciones</div>
+</div>
+</div>
+{% endblock %}
+-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.93969262, M12=0.34202014, M21=-0.34202014, M22=0.93969262,sizingMethod='auto expand')"; /* IE6-8 */
+    -ms-transform: rotate(-20deg);
+

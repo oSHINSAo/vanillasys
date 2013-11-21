@@ -1,0 +1,13 @@
+<table style="padding:0px;width:520px;border-spacing:0;background-color:#fafafa;font-size:12px;text-align:center">	
+
+
+<tr style="font-size:16px;color:#ab1226;text-shadow: gray 0.1em 0.1em 0.2em">
+
+<th colspan=1>Cliente_id</th>
+<th colspan=1>Situaci&oacute;n</th>
+
+</tr>
+{% for s in situacion %}
+<tr {% if forloop.counter|divisibleby:2 %}{% else %}class="odd"{% endif %}><td>{{s.idcla.idcli}}_{{s.idcla}}</td><td>{{s.situacion}}</td></tr>
+{%endfor%}
+</table>

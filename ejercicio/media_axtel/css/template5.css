@@ -1,0 +1,103 @@
+@font-face 
+{ 
+font-family:arkitech; src:url('fonts/arkitech.otf'); 
+} 
+#title
+{
+border:1px solid black;
+font-family:arkitech;
+font-size:30px;
+color:#990000;
+width:1010px;
+margin-top:5px;
+margin-left:auto;
+margin-right:auto
+}
+div.boton
+{
+float:left;
+background-image:none;
+background-color:white;
+box-shadow:0px 0px 0px #000000;
+border-radius: 15px;
+text-align:center;
+width:200px;
+color:#990000;
+padding-top:3px;
+padding-bottom:3px;
+font-family:Verdana;
+font-size:20px;
+position:absolute
+}
+div.boton:hover
+{
+border:3px solid black;
+border-radius:15px;
+background-color:#990000;
+background-repeat:repeat-x;
+margin-top:-8px;
+padding-top:5px;
+padding-bottom:5px;
+padding-left:0px;
+padding-right:0px;
+color:white;
+box-shadow:5px 5px 10px #000000;
+font-family:Verdana;
+font-size:25px;
+z-index:1;
+cursor:pointer
+}
+div.active
+{
+border:3px solid black;
+border-radius:15px;
+background-color:#990000;
+background-repeat:repeat-x;
+margin-top:-8px;
+padding-top:5px;
+padding-bottom:5px;
+padding-left:0px;
+padding-right:0px;
+color:white;
+box-shadow:5px 5px 10px #000000;
+font-family:Verdana;
+font-size:25px;
+z-index:1;
+cursor:pointer
+}
+#menu
+{
+border:1px solid black;
+margin-left:auto;
+margin-right:auto;
+width:1030px;
+height:40px;
+padding:10px;
+}
+#contenido
+{
+border:1px solid black;
+background-image:url('../images/placa.png');
+width:1000px;
+height:745px;
+margin: 1px auto;
+}
+#lista
+{
+border:1px solid black;
+margin-left:50px;
+width:880px;
+height:550px;
+margin-top:50px;
+color:white;
+font-family:verdana;
+overflow:auto;
+}
+.pair
+{
+background-color:#606060;
+}
+.odd
+{
+background-color:#909090;
+}

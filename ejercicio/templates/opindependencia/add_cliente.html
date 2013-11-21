@@ -1,0 +1,55 @@
+{% extends "base_op.html" %}
+
+
+{% block title %}{% block Title2 %}Agregar Clientes{% endblock %}{% endblock %}
+
+{% block active2 %}active{% endblock %}
+{% block content %}
+
+
+<form action="." method="post">{% csrf_token %}
+		
+<table style="font-family:'Droid Sans', sans-serif;font-size:11px;text-align:center;margin-left:auto;margin-right:auto;">
+
+<tr><td>
+        <label for="id_cliente">Nuevo cliente:</label>   </td><td>
+	<input id="id_cliente" type="text" name="cliente" />   
+</td></tr>
+<tr><td>
+        <label for="id_cliente">Tipo de Cliente:</label>   </td><td>
+		
+<SELECT NAME="tipo" id="id_tipo"> 
+   <OPTION VALUE="">---------------</OPTION> 
+   <OPTION VALUE="Cliente CP/SP">Cliente CP/SP</OPTION> 
+   <OPTION VALUE="Cliente SP">Cliente SP</OPTION> 
+   <OPTION VALUE="Fuera de alcance">Fuera de alcance</OPTION> 
+</SELECT>  
+	
+	
+</td></tr>
+
+
+<tr><td colspan=2>
+
+
+		<input type="submit" value="Agregar" style="width:120px;height:40px;font-size:15px;font-family: 'Droid Sans', sans-serif;"/>
+	</form></td></tr></table>
+
+<table style="width:520px;font-family:'Droid Sans', sans-serif;font-size:16px;text-align:center;margin-left:auto;margin-right:auto;">
+
+<tr style="color:#AB1226">
+<th colspan=3 style="background-color:#D0D0D0;font-size:18px"> Clientes </th>
+			</tr>
+<tr style="background-color:#A0A0A0;">
+<th >Clientes</th><th >Tipo</th></tr>
+{% for c in clientes%}
+<tr style="background-color:#F0F0F0;"><td>
+{{c}}</td><td>
+{{c.tipo}}</td></tr>
+
+{%endfor%}
+</table>
+
+<br>{{mensaje}}
+
+{% endblock %}

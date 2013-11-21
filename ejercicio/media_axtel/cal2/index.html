@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>jQuery UI Datepicker - Default functionality</title>
+	<link rel="stylesheet" href="theme/blitzer/jquery.ui.all.css">
+	<script src="jquery-1.8.0.js"></script>
+	<script src="ui/jquery.ui.core.js"></script>
+	<script src="ui/jquery.ui.widget.js"></script>
+	<script src="ui/jquery.ui.datepicker.js"></script>
+
+	<script>
+	$(function() {
+		$( "#vdatepicker" ).datepicker({dateFormat: 'yy-mm-dd',
+    onSelect: function(dateText, inst) {
+      $("input[name='datepicker']").val(dateText);
+    }
+
+
+
+
+});
+	});
+	</script>
+</head>
+<body>
+
+<form action="/axtel/headline/news/" method="post">
+    <div class="demo">
+
+<h2>Seleccionar fecha: <br><div style="font-size:10px;" id="vdatepicker"> </div></h2>
+<input type="text" name="datepicker" value="thevalue" />
+
+
+
+</div>
+<input type="submit" value="Enviar" />
+</form>
+
+
+
+<div class="demo-description">
+<p>The datepicker is tied to a standard form input field.  Focus on the input (click, or use the tab key) to open an interactive calendar in a small overlay.  Choose a date, click elsewhere on the page (blur the input), or hit the Esc key to close. If a date is chosen, feedback is shown as the input's value.</p>
+</div><!-- End demo-description -->
+
+</body>
+</html>

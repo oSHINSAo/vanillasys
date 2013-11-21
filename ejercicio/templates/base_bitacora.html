@@ -1,0 +1,211 @@
+
+<html>
+<head>
+<title>{% block title%}{%endblock%}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+
+<script src="/media_axtel/toastmessage/jquery.toastmessage.js" type="text/javascript"></script>
+<link href="/media_axtel/toastmessage/jquery.toastmessage.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+
+
+function notify()
+{
+
+
+$.get('/bitacora/notify?id='+{{request.session.user_id}}, function(data) {
+
+    $('#notify').html(data);
+  });
+
+
+}
+
+
+var auto_refresh2 = setInterval(notify, 5000);
+notify();
+
+
+function noti()
+{
+
+$.get('/bitacora/window_notification', function(data) {
+
+    $('#window-notification').html(data);
+  });
+
+
+}
+
+noti();
+var noti_refresh = setInterval(noti, 120000);
+
+
+
+$('#check_all').click(function(event) {   
+    if(this.checked) {
+        // Iterate each checkbox
+        $(':checkbox').each(function() {
+            this.checked = true;                        
+        });
+    }
+});
+
+
+
+</script>
+{% block script%}{%endblock%}
+
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+<style>
+.marcador
+{
+float:left;
+width:200px;
+height:44px;
+background-image:url('/media_axtel/images/marcador3.png');
+background-repeat:no-repeat;
+color:#AB1226;
+cursor:pointer;
+}
+.marcador : hover
+{
+float:left;
+width:200px;
+height:44px;
+background-image:url('/media_axtel/images/marcador2.png');
+background-repeat:no-repeat;
+color:white;
+cursor:pointer;
+}
+.active
+{
+float:left;
+width:200px;
+height:44px;
+background-image:url('/media_axtel/images/marcador2.png');
+background-repeat:no-repeat;
+color:white;
+cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+
+<div id="cubierta" style="width:1200px;border:1px solid black;margin-left:auto;margin-right:auto;">
+<div id="title" style="width:1200px;height:80px;">
+<div style="height:80px;">
+<div style="float:left;width:80px;height:80px;"><img src="/media_axtel/images/axtellogo.png" border=0 width="70px" height="70px" style="margin-top:5px;"/></div>
+<div style="float:left;width:270px;height:80px;"><img src="/media_axtel/images/logobi.png" border=0 width="262px" height="50px" style="margin-top:15px;"/></div>
+<div style="float:left;width:660px;height:80px;text-align:center;font-size:45px;color:#990000;margin-top:5px;">
+<div style="width:848px;height:68px;background-color:#AB1226;border:1px solid #AB1226;color:white;margin-left:auto;margin-right:auto;text-align:center;">
+<div style="width:500px;height:50px;border:1px solid #AB1226;margin-left:auto;margin-right:auto;margin-top:8px;text-align:center;">
+{% block Title2 %}{% endblock %}
+</div>
+</div>
+</div>
+
+</div></div>
+<div style="width:1200px;height:4px;background-color:#AB1226;font-size:0px;"></div>
+<div style="width:1200px;height:4px;background-color:white;font-size:0px;"></div>
+<div style="width:1200px;height:4px;background-color:gray;font-size:0px;"></div>
+<div style="width:1200px;height:4px;background-color:white;font-size:0px;"></div>
+<div style="width:1200px;height:4px;background-color:#AB1226;font-size:0px;"></div>
+<div style="width:1200px;height:4px;background-color:white;font-size:0px;"></div>
+{%if request.session.user_id%} 
+<div style="width:1198px;height:50px;border:1px solid #AB1226;text-align:center;font-family: 'Droid Sans', sans-serif;font-size:12px;color:white;background-color:#AB1226;">
+<div style="width:1000px;height:30px;margin-left:auto;margin-right:auto;text-align:center;margin-top:15px;">
+<h2><b>Bienvenido:</b><i> {{request.user.first_name}} {{request.user.last_name}}</i> <b>Usuario:</b><i> {{request.user.username}}</i> {%if request.session.nivel%} <b>Nivel:</b> <i>Administrador</i> {%endif%} </h2>
+</div>
+</div>
+<br>
+<!-- ################### MENU ########################-->
+<div style="width:1200px;height:44px;font-family: 'Droid Sans', sans-serif;font-size:13px;color:white;text-align:center;border-bottom:1px solid #AB1226;">
+<div class="marcador {% block active1 %}{% endblock %}" onclick="location.href='/bitacora/'"><div style="height:20px;margin-top:15px;">Inicio</div></div>
+<div class="marcador {% block active2 %}{% endblock %}" onclick="location.href='/bitacora/add/'"><div style="height:20px;margin-top:15px;">Agregar</div></div>
+{%if request.session.nivel %} 
+<div class="marcador {% block active3 %}{% endblock %}" onclick="location.href='/bitacora/asignar/'"><div style="height:20px;margin-top:15px;">Asignar</div></div>
+<div class="marcador {% block active4 %}{% endblock %}" onclick="location.href='/bitacora/activar/'"><div style="height:20px;margin-top:15px;">Activar Cuentas</div></div>
+<div class="marcador {% block active5 %}{% endblock %}" onclick="location.href='/bitacora/privilegios/'"><div style="height:20px;margin-top:15px;">Privilegios</div></div>
+{%endif%}
+<!--<div class="marcador {% block active6 %}{% endblock %}" onclick="location.href='/bitacora/privilegios/'"><div style="height:20px;margin-top:15px;">Perfil</div></div>-->
+<div class="marcador" onclick="location.href='/bitacora/logout/'"><div style="height:20px;margin-top:15px;">Salir</div></div>
+</div>
+<!-- ##########################################-->
+
+<!-- ################### NOTIFICATIONS ########################-->
+
+<div id="notify">
+<style>
+ul
+{
+font-family: 'Droid Sans', sans-serif;
+font-size:14px;
+list-style-type:none;
+color:#AB1226;
+}
+li:hover
+{
+color:#A0A0A0;
+}
+a
+{
+color:#AB1226;
+}
+a:hover
+{
+color:#A0A0A0;
+}
+</style>
+<ul>
+<li><a href="/bitacora/" >Total de reportes abiertos ( {{total}} ) </a></li>
+<li><a href="#" onclick="Abiertos()">Abiertos por {{request.user.first_name}} ( {{abiertos}} )</a></li>
+
+<li><a href="#" onclick="Asignados()">Asignados a {{request.user.first_name}} ( {{asignados}} ) </a></li>
+<li><a href="#" onclick="Eliminar()"> Limpiar  ( {{cerrados}} ) </a></li>
+{%if request.session.nivel %} 
+<li><a href="/bitacora/activar/" > Cuentas por activar  ( {{activar}} ) </a></li>
+
+<li><a href="/bitacora/delete_user" > Eliminar Usuarios </a></li>
+{% endif%}
+<li><a href="/bitacora/perfil/" > Mi Perfil </a></li>
+</ul>
+</div>
+
+<!-- ##########################################-->
+
+
+{%else%}
+
+<!-- ################### Formulario ########################-->
+<h1 style="text-align:center;font-size:11px;font-family: 'Droid Sans', sans-serif;font-size:18px;">Para acceder introduce tu usuario y contrase&ntilde;a</h1>
+
+
+<form action="/bitacora/" method="post" style="text-align:center;font-size:11px;font-family: 'Droid Sans', sans-serif;font-size:11px;">
+<label> Usuario</label>
+<input type="text" name="usuario" value=""  />
+<label> Contrase&ntilde;a</label>
+<input type="password" name="contra" value=""  />
+
+<input type="submit" value="Enviar" />
+
+
+</form>
+<br><div style="text-align:center;font-size:11px;font-family: 'Droid Sans', sans-serif;font-size:11px;">Si haz olvidado tu contrase&ntilde;a  <a href="/accounts/password/reset/">Presiona Aqu&iacute</a></div>
+<br><div style="text-align:center;font-size:11px;font-family: 'Droid Sans', sans-serif;font-size:11px;">Para crear un usuario <a href="/bitacora/nuevo/">Presiona Aqu&iacute</a></div><br><br>
+{{mensaje|safe}}
+<!-- ##########################################-->
+<br>
+
+{%endif%}
+
+
+
+{% block content%}{%endblock%}
+</div>
+<div id="window-notification"></div>
+</body>
+</html>

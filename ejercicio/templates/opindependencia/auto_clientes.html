@@ -1,0 +1,53 @@
+<table style="padding:0px;width:1000px;border-spacing:0;background: transparent;font-size:12px;text-align:center">	
+
+
+
+<tr style="font-size:16px;color:#ab1226;text-shadow: black 0.1em 0.1em 0.2em">
+<th colspan=1>Clientes CP/SP</th>
+<th colspan=1>Clientes SP</th>
+<th colspan=1>Clientes sin Alcance</th>
+
+
+</tr>
+
+<tr><td valign="top">
+<table border=0 width="300"   cellpadding="1" style="text-align:center;">	
+{% for c in clientes %}
+{% if c.tipo == "Cliente CP/SP"%}
+<tr style="color:{%if c.idcli in list_id%}yellow{%else%}white{%endif%};">
+
+<td colspan=1>{{ c }}</td>
+</tr>
+{%endif%}
+{% endfor %}
+</table>
+
+
+</td><td valign="top">
+<table border=0 width="300"   cellpadding="1" style="text-align:center">	
+{% for c in clientes %}
+
+{% if c.tipo == "Cliente SP"%}
+<tr style="color:{%if c.idcli in list_id%}yellow{%else%}white{%endif%};">
+
+<td colspan=1>{{ c }}</td>
+</tr>
+{%endif%}
+{% endfor %}
+</table>
+</td><td valign="top">
+<table border=0 width="300"   cellpadding="1" style="text-align:center">	
+{% for c in clientes %}
+{% if c.tipo == "Fuera de alcance"%}
+<tr style="color:{%if c.idcli in list_id%}yellow{%else%}white{%endif%};">
+
+
+<td colspan=1>{{ c }}</td>
+</tr>
+{%endif%}
+{% endfor %}
+</table>
+</td></tr>
+
+
+</table>

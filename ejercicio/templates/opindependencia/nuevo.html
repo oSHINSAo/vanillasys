@@ -1,0 +1,33 @@
+{% extends "base_sol2.html" %}
+
+{% block title %}Alta de Usuarios{% endblock %}
+
+{% block active1 %}active{% endblock %}
+{% block content %}
+<div style="width:600px;height:330px;margin-left:auto;margin-right:auto;">
+<form action="." method="post" style="font-size:11px;font-family: 'Droid Sans', sans-serif;font-size:11px;">{% csrf_token %}
+		{{ form.as_p }}
+<div style="width:600px;height:50px;">
+<div style="width:120px;height:40px;text-align:center;margin-left:240px;margin-top:5px;">
+<br>
+		<input type="submit" value="Crear" style="width:120px;height:40px;font-size:15px;font-family: 'Droid Sans', sans-serif;"/>
+</div>
+</div>
+	</form>
+{{mensaje}}
+</div>
+<br>
+<!--
+		<table width="300" rules="all" cellpadding="10" style="text-align:center;font-size:11px;font-family: 'Droid Sans', sans-serif;border-collapse:collapse;margin-left:auto;margin-right:auto;">	
+<tr style="color:#AB1226;background-color:#A0A0A0;">
+
+<th colspan=2> Usuarios </th>
+			</tr>
+
+	{% for u in usuarios %}
+			<tr style="background-color:#F0F0F0;">
+<td> {{ u.id }} </td><td> {{ u }} </td>
+			</tr> 				
+	{% endfor %}</table><BR>-->
+
+{% endblock %}

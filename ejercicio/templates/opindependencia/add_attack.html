@@ -1,0 +1,114 @@
+{% extends "base_op.html" %}
+
+
+{% block title %}{% block Title2 %}Agregar Clientes{% endblock %}{% endblock %}
+
+{% block active1 %}active{% endblock %}
+{% block content %}
+
+
+<form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+		
+<table style="font-family:'Droid Sans', sans-serif;font-size:11px;text-align:center;margin-left:auto;margin-right:auto;">
+
+<tr><td>
+        <label for="id_cliente">Cliente:</label> </td><td>
+		
+		<SELECT NAME="idcli" id="id_idcli"> 
+   <OPTION VALUE="">---------------</OPTION> 
+   {% for c in clientes %}
+   
+   <OPTION VALUE="{{c.idcli}}">{{c}}</OPTION> 
+   {% endfor %} 
+</SELECT>  
+
+ <a href="/opindependencia/add_cliente"><img src="/media_axtel/images/plus.png" height=20 width=20 /> </a>
+ 
+</td></tr>
+<tr><td>
+        <label for="id_cliente">Tipo de Ataque:</label>   </td><td>
+		
+<SELECT NAME="idtip" id="id_tip"> 
+   <OPTION VALUE="">---------------</OPTION> 
+   {% for t in tipos %}
+   
+   <OPTION VALUE="{{t.idtip}}">{{t}}</OPTION> 
+   {% endfor %} 
+</SELECT>   <a href="/opindependencia/add_tipo"><img src="/media_axtel/images/plus.png" height=20 width=20 /> </a>
+</td></tr>
+
+<tr><td>
+        <label for="id_cliente">Consecuencia:</label>   </td><td>
+		
+<textarea name="consecuencia" id="id_consecuencia"  rows="4" cols="50"></textarea>
+	  
+</td></tr>
+<tr><td>
+        <label for="id_cliente">Status:</label>   </td><td>
+		
+<SELECT NAME="idsta" id="id_status"> 
+   <OPTION VALUE="">---------------</OPTION> 
+   {% for s in status %}
+   
+   <OPTION VALUE="{{s.idsta}}">{{s}}</OPTION> 
+   {% endfor %} 
+</SELECT>  
+	
+	 <a href="/opindependencia/add_status"><img src="/media_axtel/images/plus.png" height=20 width=20 /> </a>
+</td></tr>
+
+<tr><td>
+        <label for="id_situacion">Situacion:</label>   </td><td>
+		
+<textarea name="situacion" id="id_situacion"  rows="4" cols="50"></textarea>
+	  
+</td></tr>
+<tr><td>
+        <label for="id_accion">Accion:</label>   </td><td>
+		
+<textarea name="accion" id="id_accion"  rows="4" cols="50"></textarea>
+	  
+</td></tr>
+<tr height=70><td>
+<label for="id_image2">Imagen:</label>
+</td><td>
+<input id="id_image" type="file" class="" name="image">
+</td></tr>
+
+<tr height=70><td colspan=2>
+
+
+		<input type="submit" value="Agregar" style="width:120px;height:40px;font-size:15px;font-family: 'Droid Sans', sans-serif;"/>
+	</form></td></tr></table>
+
+<table style="width:920px;font-family:'Droid Sans', sans-serif;font-size:16px;text-align:center;margin-left:auto;margin-right:auto;">
+
+<tr style="color:#AB1226">
+<th colspan=5 style="background-color:#D0D0D0;font-size:18px"> Clientes </th>
+			</tr>
+<tr style="background-color:#A0A0A0;">
+<th >Clientes</th><th >Tipo</th><th >Consecuencia</th><th >Status</th><th >Guardar</th></tr>
+{% for a in attack%}
+<tr style="background-color:#F0F0F0;"><td>
+{{a.idcli}}</td><td>{{a.idtip}}</td><td>{{a.consecuencia}}</td><td>
+<form action="/opindependencia/update/" method="post">
+	<input id="id_tipo" type="hidden" name="idcla" value="{{a.idcla}}"/>  
+<SELECT NAME="idsta" id="id_status"> 
+   <OPTION VALUE="">---------------</OPTION> 
+   {% for s in status %}
+
+   <OPTION VALUE="{{s.idsta}}"{% if a.idsta.idsta == s.idsta%}selected="selected"{%endif%} >{{s}}</OPTION> 
+   {% endfor %} 
+</SELECT>  
+
+</td><td>
+<input type="submit" value="Guardar" style="width:120px;height:40px;font-size:15px;font-family: 'Droid Sans', sans-serif;"/>
+</form>
+</td></tr>
+
+{%endfor%}
+</table>
+
+<br>{{mensaje}}
+
+{% endblock %}

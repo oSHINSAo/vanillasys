@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>{% block title%}{%endblock%}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<link href="/media_axtel/cale/css/blitzer/jquery-ui-1.10.2.custom.css" rel="stylesheet">
+	<script src="/media_axtel/cale/js/jquery-1.9.1.js"></script>
+	<script src="/media_axtel/cale/js/jquery-ui-1.10.2.custom.js"></script>
+
+</script>
+
+{% block script%}{%endblock%}
+
+
+
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+   <style type="text/css" media="print">
+.rojo{background-color:#AB1226;border:0}
+.gris{background-color:gray;border:0}
+html{-webkit-print-color-adjust:exact;}
+    </style>
+
+<style type="text/css">
+
+.rojo{background-color:#AB1226;border:0}
+.gris{background-color:gray;border:0}
+
+html *
+{
+   font-family: Arial !important;
+}
+</style>
+
+</head>
+<body>
+
+
+<div id="cubierta" style="width:1200px;border:1px solid black;margin-left:auto;margin-right:auto;">
+<div id="title" style="width:1200px;height:80px;">
+<div style="height:80px;">
+<div style="float:left;width:80px;height:80px;"><img src="/media_axtel/images/axtellogo.png" border=0 width="70px" height="70px" style="margin-top:5px;"/></div>
+<div style="float:left;width:270px;height:80px;"><img src="/media_axtel/images/logobi.png" border=0 width="262px" height="50px" style="margin-top:15px;"/></div>
+<div style="float:left;width:660px;height:80px;text-align:center;font-size:45px;color:#990000;margin-top:5px;">
+<div style="width:848px;height:68px;background-color:#AB1226;border:1px solid #AB1226;color:white;margin-left:auto;margin-right:auto;text-align:center;">
+<div style="width:800px;height:50px;border:1px solid #AB1226;margin-left:auto;margin-right:auto;margin-top:8px;text-align:center;">
+{% block Title2 %}{% endblock %}
+</div>
+</div>
+</div>
+
+</div></div>
+<div style="width:1200px;height:4px;background-color:#AB1226;font-size:0px;"></div>
+<div style="width:1200px;height:4px;background-color:white;font-size:0px;"></div>
+<div style="width:1200px;height:4px;background-color:gray;font-size:0px;"></div>
+<div style="width:1200px;height:4px;background-color:white;font-size:0px;"></div>
+<div style="width:1200px;height:4px;background-color:#AB1226;font-size:0px;"></div>
+<div style="width:1200px;height:4px;background-color:white;font-size:0px;"></div>
+
+
+<!--
+<div id='test' style="border:0px solid black;">
+<div id="cubierta" style="width:1005px;border:0px solid black;margin-left:auto;margin-right:auto;">
+<div id="title" style="width:1005px;height:120px;">
+<div style="height:120px;">
+
+<div style="float:left;width:80px;height:80px;"><img src="/media_axtel/images/bann.png" width="1000" border=0  style="margin-top:5px;border-spacing:0;box-shadow: 8px 8px 3px #888888;"/></div>
+
+
+
+
+</div></div>
+
+-->
+
+<!--<div class="rojo" style="width:1005px;height:4px;background-color:#AB1226;font-size:0px;"></div>
+<div style="width:1005px;height:4px;background-color:white;font-size:0px;"></div>
+<div style="width:1005px;height:4px;background-color:gray;font-size:0px;"></div>
+<div style="width:1005px;height:4px;background-color:white;font-size:0px;"></div>
+<div class="rojo" style="width:1005px;height:4px;background-color:#AB1226;font-size:0px;"></div>
+<div style="width:1005px;height:4px;background-color:white;font-size:0px;"></div>
+<hr size=5 class="rojo"> 
+<hr size=5 class="gris"> 
+<hr size=5 class="rojo"> -->
+<div align=center>
+{% block content%}{%endblock%}
+</div>
+
+</div>
+
+
+
+<div id="window-notification"></div>
+</body>
+</html>

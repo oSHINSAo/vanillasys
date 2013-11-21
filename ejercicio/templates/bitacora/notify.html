@@ -1,0 +1,35 @@
+<style>
+ul
+{
+font-family: 'Droid Sans', sans-serif;
+font-size:14px;
+list-style-type:none;
+color:#AB1226;
+}
+li:hover
+{
+color:#A0A0A0;
+}
+a
+{
+color:#AB1226;
+}
+a:hover
+{
+color:#A0A0A0;
+}
+</style>
+<ul>
+<li><a href="/bitacora/" >Total de reportes abiertos ( {{total}} ) </a></li>
+<li><a href="#" onclick="Abiertos()">Abiertos por {{request.user.first_name}} ( {{abiertos}} )</a></li>
+
+<li><a href="#" onclick="Asignados()">Asignados a {{request.user.first_name}} ( {{asignados}} ) </a></li>
+<li><a href="#" onclick="Eliminar()"> Limpiar  ( {{cerrados}} ) </a></li>
+
+{%if request.session.nivel %} 
+<li><a href="/bitacora/activar/" > Cuentas por activar  ( {{activar}} ) </a></li>
+
+<li><a href="/bitacora/delete_user" > Eliminar Usuarios </a></li>
+{% endif%}
+<li><a href="/bitacora/perfil/" > Mi Perfil</a></li>
+</ul>

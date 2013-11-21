@@ -1,0 +1,112 @@
+{% extends "base_quiz.html" %}
+
+
+{% block title %}{% block Title2 %}Examen Axtel{% endblock %}{% endblock %}
+
+{% block active2 %}active{% endblock %}
+
+{% block script%}
+<script>
+function CheckData()
+{
+/*alert( true+true );*/
+var a = new Array()
+var mensaje = ""
+var returnval = false;
+
+var nombre = document.getElementById("id_nombre").value;
+
+{% for p in preguntas%}
+var p_{{p.idpre}} = document.getElementsByName("preg_{{p.idpre}}");
+
+var check=new Array();
+for ( var i = 0; i < p_{{p.idpre}}.length; i++) {
+	check.push(p_{{p.idpre}}[i].checked);
+
+}
+/*alert("check:"+check);*/
+/*alert(check[0]+check[1]+check[2])*/
+var c = false;
+for ( var i = 0; i < check.length; i++) {
+c += check[i];
+}
+if(c == false) {a.push(p_{{p.idpre}});}
+
+/*alert("valor: "+p_{{p.idpre}}[0].checked+"valor: "+p_{{p.idpre}}[1].checked+"valor: "+p_{{p.idpre}}[2].checked);
+if (!p_{{p.idpre}}) {
+a.push(p_{{p.idpre}});
+}*/
+{% endfor %}
+
+/*alert("Olvidaste contestar:"+ a.length + " preguntas." );*/
+
+if (nombre !="" && a.length==0){
+alert("Welcome " + document.forms["form1"]["nombre"].value + "!");
+   returnval = true;
+}
+else{
+if (nombre== "" && a.length ==0){
+mensaje = "Debe introducir un nombre para continuar.";
+}
+else if (nombre =="" && a.length !=0){
+mensaje = "Olvidaste contestar "+ a.length +" preguntas e introducir tu nombre."
+}
+else if (nombre !="" && a.length!=0){
+mensaje = "Olvidaste contestar "+ a.length +" preguntas."
+}
+
+
+alert(mensaje);
+}
+
+
+return returnval;
+}
+
+
+
+</script>
+
+
+{%endblock%}
+
+
+{% block content %}
+
+<h2>{{quiz}}</h2>
+
+
+<form action="/quiz/respuestas/" name="form1" method="post" onsubmit="return CheckData()">{% csrf_token %}
+
+<!--<form action="/quiz/respuestas/" method="post" onsubmit="return confirm('Una vez aceptando, no podras hacer cambios en tus respuestas. Estas seguro que deseas continuar?');">{% csrf_token %}-->
+
+
+	<input id="id_idqui" type="hidden" name="idqui" value={{quiz.idqui}} />
+<table style="width:600px;font-family:'Droid Sans', sans-serif;font-size:16px;text-align:left;margin-left:auto;margin-right:auto;">
+<tr><td>Nombre: <input id="id_nombre" type="text" name="nombre" size=40 required="required" /> </td></th>
+<!--<tr><td>Empleado #:<input id="id_noemp" type="text" name="noemp" /> </td></th>-->
+<tr height=25><td></td></tr>
+{% for p in preguntas%}
+<tr><th>{{p}}</th></tr>
+{%for r in respuestas%}{%if p.idpre == r.idpre.idpre%}
+
+
+<tr><td><INPUT TYPE="radio" id="id_p_{{p.idpre}}" NAME="preg_{{p.idpre}}" VALUE="{{r.idres}}" required="required" >{{r}}</td></tr>
+
+
+{%endif%}{%endfor%}<tr height=15><td></td></tr>{%endfor%}
+</table>	
+
+
+
+		<input type="submit" value="Guardar" style="width:120px;height:40px;font-size:15px;font-family: 'Droid Sans', sans-serif;"/>
+	</form></td></tr></table>
+
+
+
+<br>{{mensaje}}
+	
+
+<!--<a href="/quiz/add/"> REGRESAR </a> -->
+
+{% endblock %}

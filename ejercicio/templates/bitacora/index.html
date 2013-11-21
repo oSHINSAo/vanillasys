@@ -1,0 +1,55 @@
+{% extends "base_bitacora.html" %}
+
+{% block title %}{% block Title2 %}Bit&aacutecora Financiero{% endblock %}{% endblock %}
+{% block active1 %}active{% endblock %}
+{% block script %}
+
+<script type="text/javascript">
+
+
+function Abiertos(){
+clearInterval(auto_refresh);
+  $.get('/bitacora/abiertos?id='+{{request.session.user_id}}, function(data) {
+    $('#bitacora').html(data);
+  });
+}
+
+function Asignados(){
+clearInterval(auto_refresh);
+  $.get('/bitacora/asignados?id='+{{request.session.user_id}}, function(data) {
+    $('#bitacora').html(data);
+  });
+}
+
+function Eliminar(){
+clearInterval(auto_refresh);
+  $.get('/bitacora/eliminar/', function(data) {
+    $('#bitacora').html(data);
+  });
+}
+
+function bitacora()
+{
+
+$.get('/bitacora/bitacora/', function(data) {
+
+    $('#bitacora').html(data);
+  });
+
+}
+bitacora();
+var auto_refresh = setInterval(bitacora, 5000); // refresh every 10000 milliseconds
+
+</script>
+{% endblock %}
+{% block content %}
+
+<div id="notify"></div>
+
+<div id="bitacora"></div>
+
+{% endblock %}
+
+{% block content-related %}
+
+{% endblock %}

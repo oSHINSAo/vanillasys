@@ -1,0 +1,97 @@
+{% extends "base_bitacora.html" %}
+
+{% block title %}{% block Title2 %}Privilegios en Bit&aacutecora{% endblock %}{% endblock %}
+{% block script %}
+
+{% endblock %}
+{% block active5 %}active{% endblock %}
+{% block content %}
+
+<table width="500" rules="all" cellpadding="4" style="text-align:center;font-size:11px;font-family: 'Droid Sans', sans-serif;border-collapse:collapse;margin-left:auto;margin-right:auto;">	
+<tr style="color:#AB1226"><form action="." method="post">
+<th colspan=4 style="background-color:#D0D0D0;"> Bitacora </th>
+</tr><tr style="background-color:#A0A0A0;">
+<th>Nombre</th><th>Usuario</th><th>Correo</th><th>Privilegios</th>
+</tr>
+{% for u in users %}
+
+
+
+<tr style="background-color:#F0F0F0;">
+<td> {{u.first_name }}  {{ u.last_name }}</td><td> {{u}}</td><td> {{u.email}}</td>
+<td>
+
+<select name="nivel_{{u.id}}">
+{% for n in nivel %}
+
+
+
+{% if n.idniv == u.idniv.idniv %}
+   <option value="{{n.idniv}}" selected>{{n}}</option>  
+{% else%}
+    <option value="{{n.idniv}}">{{n}}</option>
+{%endif%}
+
+
+
+{% endfor %}
+
+</select>
+
+</td>
+
+
+
+</tr>
+{% endfor %}
+
+</table>
+
+<div style="width:1200px;height:50px;">
+<div style="width:120px;height:40px;text-align:center;margin-left:550px;margin-top:5px;">
+<input type="submit" name=submit value="Guardar Cambios" style="width:150px;height:40px;font-size:15px;font-family: 'Droid Sans', sans-serif;">
+</div>
+</div>
+<!--
+
+
+			<th>Descripcion</th><th>Prioridad</th><th>Estatus</th><th>Acceso</th><th>Tecnologia</th><th>Proceder</th><th>Ultima modificacion por</th><th>Asignar a</th>
+</tr>
+
+	{% for b in bitacora %}
+			<tr>
+<td> {{ b.creado.first_name }}  {{ b.creado.last_name }}</td><td> {{ b.im }} </td><td> {{ b.idcli }} </td><td> {{ b.desc }} </td><td> {{ b.idpri }} </td><td> {{ b.idest }} </td><td> {{ b.idacc }} </td><td> {{ b.idtec }} </td><td> {{ b.idpro }} </td><td><b>{{ b.ultimo.first_name }} {{ b.ultimo.last_name }}</b><br><i>
+{{b.fecha_mod|date:"d/m/Y"}} {{b.hora_mod|time:"H:i:s"}}</i>
+</td>
+
+{% if b.activo and b.activo.id != request.session.user_id %}
+<td>Ocupado por {{b.activo}}{{b.activo.id}}</td>
+{%else%}
+<td>
+
+<select name="asignar_{{b.idbit}}">
+
+  <option value="0">---------------</option>
+{% for u in users %}
+
+
+
+  <option value="{{u.id}}">{{u.first_name}} {{u.last_name}}</option>
+
+
+{% endfor %}
+
+</select>
+
+
+</td>
+{%endif%}
+
+			</tr> 				
+	{% endfor %}</table>
+<input type="submit" name=submit value="Actualizar">
+</form>
+
+-->
+
+{% endblock %}

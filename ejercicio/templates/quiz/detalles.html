@@ -1,0 +1,49 @@
+{% extends "base_quiz.html" %}
+
+
+{% block title %}{% block Title2 %}Examen Axtel{% endblock %}{% endblock %}
+
+{% block active2 %}active{% endblock %}
+{% block content %}
+
+<h2>{{quiz}}</h2>
+
+
+<table style="width:600px;font-family:'Droid Sans', sans-serif;font-size:16px;text-align:left;margin-left:auto;margin-right:auto;">
+<tr height=28><td colspan=2>Nombre:   <b><i>{{datos.nombre}}</i></b> </td></tr>
+<!--<tr height=28><td colspan=2>Empleado #:   <b><i>{{datos.noemp}}</i></b> </td></th>-->
+<tr height=28><td colspan=2>Fecha:   <b><i>{{datos.fecha|date:"d/m/Y"}} - {{datos.hora|time:"H:i:s"}}</i></b> </td></tr>
+<tr height=25><td></td></tr>
+{% for p in preguntas%}
+<tr><th width=50>
+{%for key,value in check.items%}
+{% if key == p.idpre %}
+{% if value%}
+ <img src="/media_axtel/images/check.png" width=25px height=25px> 
+{%else%}
+<img src="/media_axtel/images/cross.png" width=25px height=25px> 
+{%endif%}
+{%endif%}
+{%endfor%}</th><th>{{p}}</th></tr>
+
+
+{%for r in respuestas%}{%if p.idpre == r.idpre.idpre%}
+<tr><td colspan=2>
+{% if r.idres in res %}
+{{r}}
+
+{%endif%}
+</td></tr>
+{%endif%}{%endfor%}<tr height=15><td></td></tr>{%endfor%}
+</table>	
+
+</td></tr></table>
+
+
+
+<br>{{mensaje}}
+	
+
+<a href="/quiz/resultados/?idqui={{quiz.idqui}}"> <img src="/media_axtel/images/back.png"> </a>
+
+{% endblock %}

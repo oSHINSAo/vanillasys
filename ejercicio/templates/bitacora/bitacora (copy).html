@@ -1,0 +1,108 @@
+{%if request.session.user_id%} 
+<table width="1200" rules="all" cellpadding="4" style="text-align:center;font-size:11px;font-family: 'Droid Sans', sans-serif;border-collapse:collapse;">	
+<tr style="color:#AB1226">
+<th colspan=9 style="background-color:#D0D0D0;font-size:20px;"> Bit&aacutecora </th>
+			</tr>
+<tr style="background-color:#A0A0A0;">
+<th colspan=2>IM</th><th>Cliente</th><th style="width:359px;">Descripcion</th><th>Prioridad</th><th>Estatus</th><!--<th>Acceso</th><th>Tecnologia</th>--><th>Proceder</th><!--<th>Ultima modificacion por</th>--><th>Estado</th><th>Reasignar</th>
+</tr>
+
+	{% for b in bitacora %}
+			<tr style="background-color:#F0F0F0;">
+<td> 
+{% if b.asignado and b.asignado.id == request.session.user_id %}
+<img src="/media_axtel/images/user_warning_48.png" width=25 height=25>
+
+
+{%else%}
+{%if b.asignado%}
+
+<img src="/media_axtel/images/mypc_close.png" width=25 height=25>
+{%else%}
+{% if b.activo and b.activo.id != request.session.user_id %}
+<img src="/media_axtel/images/mypc_close.png" width=25 height=25>
+{%else%}
+{% if b.activo and b.activo.id == request.session.user_id %}
+<img src="/media_axtel/images/alert-triangle-red.png" width=25 height=25>
+{%else%}
+
+<img src="/media_axtel/images/open.png" width=25 height=25>
+{%endif%}{%endif%}{%endif%}{%endif%}
+
+
+</td>
+<td>
+{{ b.im }} </td><td> {{ b.idcli }} </td><td style="width:359px;"> {{ b.desc }} </td><td> {{ b.idpri }} </td><td> {{ b.idest }} </td><!--<td> {{ b.idacc }} </td><td> {{ b.idtec }} </td>--><td> {{ b.idpro }} </td><!--<td><b>{{ b.ultimo.first_name }} {{ b.ultimo.last_name }}</b><br><i>
+{{b.fecha_mod|date:"d/m/Y"}} {{b.hora_mod|time:"H:i:s"}}</i>
+</td>-->
+
+{% if b.asignado and b.asignado.id == request.session.user_id %}
+
+<td><form action="/bitacora/update/" method="post">
+<input type="hidden" id="id_idbit" name="idbit" value="{{b.idbit}}">
+
+<input type="submit" name=submit value="Asignado">
+</form></td>
+
+{%else%}
+{%if b.asignado%}
+<td>
+<form action="/bitacora/tomar/" method="post">
+<input type="hidden" id="id_idbit" name="idbit" value="{{b.idbit}}">
+
+<input type="submit" name=submit value="TOMAR">
+</form>
+
+
+
+{%else%}
+{% if b.activo and b.activo.id != request.session.user_id %}
+<td>Ocupado por {{b.activo}}{{b.activo.id}}</td>
+{%else%}
+
+
+
+<td><form action="/bitacora/update/" method="post">
+<input type="hidden" id="id_idbit" name="idbit" value="{{b.idbit}}">
+
+<input type="submit" name=submit value="Actualizar">
+</form>
+
+
+</td>
+{%endif%}{%endif%}{%endif%}
+
+<td>
+
+{% if b.asignado and b.asignado.id == request.session.user_id %}
+<form action="/bitacora/reasignar/" method="post">
+<input type="hidden" id="id_idbit" name="idbit" value="{{b.idbit}}">
+<select name="reasignar_{{b.idbit}}">
+
+  <option value="0">---------------</option>
+{% for u in users %}
+
+
+
+  <option value="{{u.id}}">{{u.first_name}} {{u.last_name}}</option>
+
+
+{% endfor %}
+
+</select>
+<input type="submit" name=submit value="Enviar">
+</form>
+{%else%}
+{% if b.asignado and b.asignado.id != request.session.user_id %}
+
+Asignado a {{b.asignado.first_name}} {{b.asignado.last_name}}</td>
+
+{%endif%}{%endif%}
+</td>
+
+			</tr> 				
+	{% endfor %}</table>
+
+
+{%endif%}
+

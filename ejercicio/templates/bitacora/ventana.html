@@ -1,0 +1,57 @@
+{% extends "base_bitacora.html" %}
+
+
+{% block title %}{% block Title2 %}Creaci&oacuten de Ventanas{% endblock %}{% endblock %}
+{% block content %}
+
+
+
+
+
+<form action="." method="post">{% csrf_token %}
+
+
+
+<br><br>
+
+<table border=0 width="700"   cellpadding="10" style="text-align:center;font-family: 'Droid Sans', sans-serif;">	
+<tr style="color:#003366">
+
+<th colspan=1>IM</th>
+<th colspan=1>Cliente</th>
+
+
+<th colspan=1>Fecha</th>
+<th colspan=1>Hora</th>
+
+
+<th colspan=1> Descripcion </th>
+
+
+</tr>
+{% for b in bitacora %}
+
+<tr>
+
+
+<td colspan=1>{{ b.im }}</td>
+<td colspan=1>{{ b.idcli }}</td>
+<td colspan=1> <input type=text name="fecha_{{b.idbit}}" value="{%for v in ventana %}{%if b.idbit == v.idbit.idbit%}{{v.fecha|date:'Y-m-d'}}{%endif%}{%endfor%}" placeholder="AAAA-MM-DD">
+ </td>
+<td colspan=1> <input type=text name="hora_{{b.idbit}}" value="{%for v in ventana %}{%if b.idbit == v.idbit.idbit%}{{v.hora|time:'H:i:s'}}{%endif%}{%endfor%}" placeholder="HH:MM:SS">
+ </td>
+
+<td colspan=1> <textarea  id="id_desc_{{b.idbit}}" name="desc_{{b.idbit}}" cols=67 rows=3 >{%for v in ventana %}{%if b.idbit == v.idbit.idbit%}{{v.desc}}{%endif%}{%endfor%}</textarea> </td>	
+
+
+</tr>
+{% endfor %}
+
+<tr><td>
+<input type="submit" value="Submit" >
+</td></tr>
+</table>
+
+</form>
+
+{% endblock %}

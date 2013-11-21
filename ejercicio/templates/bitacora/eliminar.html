@@ -1,0 +1,55 @@
+{%if request.session.user_id%} 
+
+
+<!-- CHECK ALL-->
+<script type="text/javascript">
+$(function () {
+    $('.checkall').click(function () {
+    	$(this).closest('form').find('input[type=checkbox]').prop('checked', this.checked);
+    });
+});
+</script>
+<fieldset style="width:1170px;">
+<form action="/bitacora/eliminar/" method="post" onsubmit="return confirm('Estas seguro que deseas eliminar estos casos?');">
+<table rules="all" cellpadding="4" style="width:1170px;text-align:center;font-size:11px;font-family: 'Droid Sans', sans-serif;border-collapse:collapse;">	
+<tr style="color:#AB1226">
+<th colspan=10 style="background-color:#D0D0D0;"> Bit&aacutecora </th>
+			</tr>
+<tr style="background-color:#A0A0A0;">
+
+<!-- CHECK ALL-->
+<th><input type="checkbox" class="checkall" />
+
+
+
+</th><th>IM</th><th>Creado</th><th>Cliente</th><th style="width:359px;">Comentarios y Acciones a Realizar</th><th>Prioridad</th><th>Estatus</th><!--<th>Acceso</th><th>Tecnologia</th>--><th>Proceder</th><!--<th>Ultima modificacion por</th>--><th>Cerrado Por</th><th>Recuperar</th>
+</tr>
+
+	{% for b in bitacora %}
+			<tr style="background-color:#F0F0F0;">
+<td> 
+<input name="array" type="checkbox" value={{b.idbit}} />
+
+</td>
+<td>
+<a href="/bitacora/detalles?idbit={{b.idbit}}">{{ b.im }} </a> </td><td> {{b.creado.first_name}} {{b.creado.last_name}} </td><td> {{ b.idcli }} </td><td style="width:359px;"> {{ b.desc }} </td><td> {{ b.idpri }} </td><td> {{ b.idest }} </td><!--<td> {{ b.idacc }} </td><td> {{ b.idtec }} </td>--><td> {{ b.idpro }} </td><!--<td><b>{{ b.ultimo.first_name }} {{ b.ultimo.last_name }}</b><br><i>
+{{b.fecha_mod|date:"d/m/Y"}} {{b.hora_mod|time:"H:i:s"}}</i>
+</td>-->
+
+
+<td>{{b.ultimo.first_name}} {{b.ultimo.last_name}}</td>
+<td>
+<a href="/bitacora/recuperar?idbit={{b.idbit}}">Recuperar</a>
+
+</td>
+			</tr> 				
+	{% endfor %}</table>
+<div style="width:1200px;height:50px;">
+<div style="width:120px;height:40px;text-align:center;margin-left:550px;margin-top:5px;">
+<input type="submit" name=submit value="Eliminar" style="width:120px;height:40px;font-size:15px;font-family: 'Droid Sans', sans-serif;">
+</div>
+</div>
+</form>
+</fieldset>
+{%endif%}
+

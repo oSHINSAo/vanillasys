@@ -1,0 +1,13 @@
+<div style="background-color:#ffffff;height:200px;width:560px;float:left;margin-left:40px;">
+<div class="liquid-slider" id="slider-id" style="background-color:#ffffff;height:255px;width:540px;">
+{% for g in graficas%}
+     <div>
+          <!--<h2 class="title">{{g.idcla.idcli}}_{{g.idcla}}</h2>-->
+          <img src="/media_axtel/{{g.grafica}}" height= 210px width= 480 /><br>
+<a href="/media_axtel/{{g.grafica}}">{{g.idcla.idcli}}_{{g.idcla}}</a>
+     </div>
+
+
+{%endfor%}
+</div></div>
+

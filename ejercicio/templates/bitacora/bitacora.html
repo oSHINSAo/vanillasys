@@ -1,0 +1,95 @@
+{%if request.session.user_id%} 
+<table width="1200" rules="all" cellpadding="4" style="text-align:center;font-size:11px;font-family: 'Droid Sans', sans-serif;border-collapse:collapse;">	
+<tr style="color:#AB1226">
+<th colspan=9 style="background-color:#D0D0D0;font-size:18px"> Bit&aacutecora </th>
+			</tr>
+<tr style="background-color:#A0A0A0;">
+<th colspan=2>IM</th><th>Creado por</th><th>Cliente/Localidad</th><th style="width:359px;">Comentarios y Acciones a Realizar</th><th>Prioridad</th><th>Estatus</th><!--<th>Acceso</th><th>Tecnologia</th>--><th>Proceder</th><!--<th>Ultima modificacion por</th>--><th>Estado</th>
+</tr>
+{% if bitacora%}
+	{% for b in bitacora %}
+			<tr style="background-color:#F0F0F0;">
+<td> 
+{% if b.asignado and b.asignado.id == request.session.user_id %}
+<img src="/media_axtel/images/user_warning_48.png" width=25 height=25>
+
+
+{%else%}
+{%if b.asignado%}
+
+<img src="/media_axtel/images/mypc_close.png" width=25 height=25>
+{%else%}
+{% if b.activo and b.activo.id != request.session.user_id %}
+<img src="/media_axtel/images/mypc_close.png" width=25 height=25>
+{%else%}
+{% if b.activo and b.activo.id == request.session.user_id %}
+<img src="/media_axtel/images/alert-triangle-red.png" width=25 height=25>
+{%else%}
+
+<img src="/media_axtel/images/open.png" width=25 height=25>
+{%endif%}{%endif%}{%endif%}{%endif%}
+
+{% for v in ventana %}
+
+{% if b.idbit == v.idbit.idbit%}
+<img src="/media_axtel/images/window_new.png" width=25 height=25>
+{%endif%}
+{%endfor%}
+
+</td>
+<td>
+<a href="/bitacora/detalles?idbit={{b.idbit}}">{{ b.im }} </a></td><td> {{b.creado.first_name}} {{b.creado.last_name}}  </td><td><b> {{ b.idcli }}</b><br>{{b.localidad}} </td><td style="width:359px;"> {{ b.desc }} </td><td> {{ b.idpri }} </td><td> {{ b.idest }} </td><!--<td> {{ b.idacc }} </td><td> {{ b.idtec }} </td>--><td> {{ b.idpro }} </td><!--<td><b>{{ b.ultimo.first_name }} {{ b.ultimo.last_name }}</b><br><i>
+{{b.fecha_mod|date:"d/m/Y"}} {{b.hora_mod|time:"H:i:s"}}</i>
+</td>-->
+
+{% if b.asignado and b.asignado.id == request.session.user_id %}
+
+<td><form action="/bitacora/update/" method="post">
+<input type="hidden" id="id_idbit" name="idbit" value="{{b.idbit}}">
+
+<input type="submit" name=submit value="Asignado">
+</form></td>
+
+{%else%}
+{%if b.asignado%}
+<td>
+<form action="/bitacora/tomar/" method="post">
+<input type="hidden" id="id_idbit" name="idbit" value="{{b.idbit}}">
+
+<input type="submit" name=submit value="TOMAR">
+</form>
+
+Asignado a {{b.asignado.first_name}} {{b.asignado.last_name}}</td>
+
+{%else%}
+{% if b.activo and b.activo.id != request.session.user_id %}
+<td>Ocupado por {{b.activo.first_name}} {{b.activo.first_name}}</td>
+{%else%}
+
+
+
+<td><form action="/bitacora/update/" method="post">
+<input type="hidden" id="id_idbit" name="idbit" value="{{b.idbit}}">
+
+<input type="submit" name=submit value="Actualizar">
+</form>
+
+
+</td>
+{%endif%}{%endif%}{%endif%}
+
+
+			</tr> 				
+	{% endfor %}
+
+{%else%}
+
+<td colspan=8> <h2> No hay elementos en la bit&aacute;cora </h2></td>
+
+{%endif%}
+
+</table>
+
+
+{%endif%}
+

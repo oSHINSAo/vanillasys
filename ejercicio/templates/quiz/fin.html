@@ -1,0 +1,37 @@
+{% extends "base_quiz.html" %}
+
+
+{% block title %}{% block Title2 %}Resultado Axtel Quiz{% endblock %}{% endblock %}
+
+{% block active2 %}active{% endblock %}
+{% block content %}
+
+
+<h2>Haz finaliz&aacute;do el Ex&aacute;men.</h2>
+
+
+
+<table style="padding:0px;width:800px;border-spacing:0;background-color:#fafafa;font-size:16px;text-align:center"><tr bgcolor="#AB1226" style="font-size:30px;color:#ffffff;text-shadow: gray 0.1em 0.1em 0.2em"><th colspan=6><i>Detalles del Examen</i></th></tr>
+<tr  style="font-size:26px;color:#ab1226;text-shadow: gray 0.1em 0.1em 0.2em">
+<th>Nombre</th><th>Examen</th><th>Aciertos</th><th>Errores</th><th>Calificacion</th><th>Nota</th>
+
+
+
+<tr><td>{{r.nombre}} </td><td>{{r.idqui}} </td><td>{{r.aciertos}} </td><td>{{r.errores}} </td>
+
+{% if r.calif >= 80.0 %}
+<td style="font-size:30px;color:#01DF01;">{{r.calif|floatformat:2}} </td><td style="font-size:30px;color:#01DF01;">Aprobado</td>
+{% else %} 
+<td style="font-size:30px;color:#DF0101;">{{r.calif|floatformat:2}} </td><td style="font-size:30px;color:#DF0101;">Reprobado</td>
+{% endif %}
+
+
+</table>
+
+<br><br>	
+
+	
+<a href="/quiz/"> <img src="/media_axtel/images/back.png"> </a>
+<br>
+
+{% endblock %}

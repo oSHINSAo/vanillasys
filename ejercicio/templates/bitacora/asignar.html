@@ -1,0 +1,74 @@
+{% extends "base_bitacora.html" %}
+
+{% block title %}{% block Title2 %}Asignar Casos{% endblock %}{% endblock %}
+{% block script %}
+
+{% endblock %}
+{% block active3 %}active{% endblock %}
+{% block content %}
+
+
+{%if request.session.user_id%} 
+<table width="1200" rules="all" cellpadding="4" style="text-align:center;font-size:11px;font-family: 'Droid Sans', sans-serif;">	
+<tr style="color:#AB1226"><form action="." method="post">
+<th colspan=8 style="background-color:#D0D0D0;"> Bit&aacutecora </th>
+			</tr>
+<tr style="background-color:#A0A0A0;">
+<th>Creado</th><th>IM</th><th>Cliente</th><th>Descripcion</th><th>Prioridad</th><th>Estatus</th><!--<th>Acceso</th><th>Tecnologia</th>--><th>Proceder</th>
+<!--<th>Ultima modificacion por</th>--><th>Asignar a</th>
+</tr>
+{% if bitacora%}
+	{% for b in bitacora %}
+			<tr style="background-color:#F0F0F0;">
+<td> {{ b.creado.first_name }}  {{ b.creado.last_name }}</td><td> {{ b.im }} </td><td> {{ b.idcli }} </td><td> {{ b.desc }} </td><td> {{ b.idpri }} </td><td> {{ b.idest }} </td>
+<!--<td> {{ b.idacc }} </td><td> {{ b.idtec }} </td>-->
+<td> {{ b.idpro }} </td>
+<!--<td><b>{{ b.ultimo.first_name }} {{ b.ultimo.last_name }}</b><br><i>
+{{b.fecha_mod|date:"d/m/Y"}} {{b.hora_mod|time:"H:i:s"}}</i>
+</td>-->
+
+{% if b.activo and b.activo.id != request.session.user_id %}
+<td>Ocupado por {{b.activo}}{{b.activo.id}}</td>
+{%else%}
+<td>
+
+<select name="asignar_{{b.idbit}}">
+
+  <option value="0">---------------</option>
+{% for u in users %}
+
+
+
+  <option value="{{u.id}}">{{u.first_name}} {{u.last_name}}</option>
+
+
+{% endfor %}
+
+</select>
+
+
+</td>
+{%endif%}
+
+			</tr> 				
+	{% endfor %}
+{%else%}
+
+<td colspan=8> <h2> No hay elementos para asignar </h2></td>
+
+{%endif%}
+
+
+
+
+</table>
+<div style="width:1200px;height:50px;border-top:1px solid black;">
+<div style="width:120px;height:40px;text-align:center;margin-left:50px;margin-top:5px;">
+<input type="submit" name=submit value="Actualizar" style="width:120px;height:40px;font-size:15px;font-family: 'Droid Sans', sans-serif;">
+</div>
+</div>
+</form>
+
+{%endif%}
+
+{% endblock %}

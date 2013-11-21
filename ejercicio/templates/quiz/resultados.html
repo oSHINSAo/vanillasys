@@ -1,0 +1,75 @@
+{% extends "base_quiz.html" %}
+
+
+{% block title %}{% block Title2 %}Lista de Resultados{% endblock %}{% endblock %}
+
+{% block active2 %}active{% endblock %}
+{% block content %}
+
+
+<h2>Lista de Resultados</h2>
+<h2>{{quiz}}</h2>
+<!--	
+<form action="." method="post">{% csrf_token %}
+	
+<table style="font-family:'Droid Sans', sans-serif;font-size:11px;text-align:center;margin-left:auto;margin-right:auto;"><tr><td>
+
+        <label for="id_creado">Agregar cuestionario:</label>   </td><td>
+	<input id="id_quiz" type="text" name="quiz" />
+
+   
+</td></tr>
+<tr><td colspan=2>
+		<input type="submit" value="Agregar" style="width:120px;height:40px;font-size:15px;font-family: 'Droid Sans', sans-serif;"/>
+	</form></td></tr></table>-->
+
+<table style="width:720px;font-family:'Droid Sans', sans-serif;font-size:14px;text-align:center;margin-left:auto;margin-right:auto;">
+<tr style="color:#AB1226">
+<th colspan=7 style="background-color:#D0D0D0;font-size:18px"> Resultados del Examen </th>
+			</tr>
+
+
+<tr style="background-color:#A0A0A0;"><th>Nombre</th><!--<th>Empleado #</th>--><th>Aciertos</th><th>Errores</th><th>Calificaci&oacute;n</th><th>Fecha</th><th>Detalles</th>
+
+
+{% for r in resultados%}
+<tr style="background-color:#F0F0F0;"><td>
+{{r}}</td><!--<td>
+{{r.noemp}}
+</td>--><td>
+{{r.aciertos}}
+</td><td>
+{{r.errores}}
+</td><td>
+{{r.calif}}
+</td><td>
+{{r.fecha|date:"d/m/Y"}}<br>
+
+{{r.hora|time:"H:i:s"}}
+</td>
+<td>
+<form action="/quiz/detalles/" method="post"  >
+	<input id="id_idres" type="hidden" name="idcla" value="{{r.idcla}}" />
+<input type="submit" value="Ver" style="width:50px;height:30px;font-size:15px;font-family: 'Droid Sans', sans-serif;"/>
+</form>
+
+</td>
+
+</tr>
+
+{%endfor%}
+</table>
+
+<br>{{mensaje}}
+	
+<form action="/quiz/excel_resultados/" method="post" onsubmit="return confirm('Al confirmar generaras el reporte en formato XLS?');">
+<input type=hidden name="idqui" value={{quiz.idqui}}>
+
+
+
+		<input type="submit" value="Excel" style="width:140px;height:40px;font-size:15px;font-family: 'Droid Sans', sans-serif;"/>
+</form>
+
+
+<a href="/quiz/add/"> <img src="/media_axtel/images/back.png"> </a>
+{% endblock %}

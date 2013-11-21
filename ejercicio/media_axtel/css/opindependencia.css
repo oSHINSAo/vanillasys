@@ -1,0 +1,87 @@
+@font-face 
+{ 
+font-family:arkitech; src:url('/media_axtel/fonts/arkitech.otf'); 
+} 
+#title
+{
+font-family: 'Droid Sans', sans-serif;
+font-size:30px;
+color:#990000;
+width:1010px;
+margin-top:5px;
+margin-left:auto;
+margin-right:auto
+}
+div.boton
+{
+float:left;
+background-image:url('../images/boton1.png');
+text-align:center;
+width:168px;
+height:20px;
+color:gray;
+font-family: 'Droid Sans', sans-serif;
+font-size:18px;
+}
+div.boton:hover
+{
+background-image:url('../images/boton2.png');
+color:white;
+font-family: 'Droid Sans', sans-serif;
+font-size:18px;
+cursor:pointer;
+}
+div.active
+{
+background-image:url('../images/boton2.png');
+color:white;
+font-family: 'Droid Sans', sans-serif;
+font-size:18px;
+cursor:pointer;
+}
+#container
+{
+background-color:#990000;
+margin-left:auto;
+margin-right:auto;
+margin-bottom:30px;
+width:1010px;
+height:20px;
+}
+#menu
+{
+margin-left:auto;
+margin-right:auto;
+width:1230px;
+height:40px;
+padding:10px;
+}
+#contenido
+{
+border:1px solid white;
+/*background-image:url('/media_incidentes/images/placa.png');*/
+width:1010px;
+/*height:745px;*/
+margin: 10px auto;
+}
+#wrapper
+{
+width:1030px;
+margin-left:auto;
+margin-right:auto;
+background-color:white;
+border:1px solid black;
+box-shadow:2px 2px 5px #606060;
+}
+#lista
+{
+border:1px solid #909090;
+margin-left:50px;
+width:880px;
+height:600px;
+margin-top:60px;
+color:white;
+font-family: 'Droid Sans', sans-serif;
+overflow:auto;
+}
+

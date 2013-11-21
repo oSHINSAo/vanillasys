@@ -1,0 +1,28 @@
+{% load tiempo_noti %}
+<script type="text/javascript">
+
+function notiii()
+{
+
+{% for n in notifications %}
+
+            $().toastmessage('showToast', {
+                text: "<font size=4>{{n.idbit.idcli}}</font> ( <font size=3>{{n.idbit.im}}</font> ) <br>  {{n.desc}} <br> <i>{{n.hora|time:'H:i'}}</i>",
+		inEffectDuration:  1500,   // in effect duration in miliseconds
+		stayTime:         10000,
+    		//sticky   : true,
+                position: 'top-right',
+                type: '{% for key,value in tiempos.items %}{% if key == n.idven %}{% check value %}{% endif %}{% endfor %}',
+                closeText: '',
+                close: function () {
+                    console.log("toast is closed ...");
+                }
+            });
+
+{%endfor%}
+
+}
+
+window.notiii();
+</script>
+

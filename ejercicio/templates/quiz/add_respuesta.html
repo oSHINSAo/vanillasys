@@ -1,0 +1,48 @@
+{% extends "base_quiz.html" %}
+
+
+{% block title %}{% block Title2 %}Agregar Respuestas{% endblock %}{% endblock %}
+
+{% block active2 %}active{% endblock %}
+{% block content %}
+
+<h2>{{preg.idqui}}</h2>
+<h2>{{preg}}</h2>
+
+<form action="." method="post">{% csrf_token %}
+		
+<table style="font-family:'Droid Sans', sans-serif;font-size:11px;text-align:center;margin-left:auto;margin-right:auto;"><tr><td>
+
+        <label for="id_creado">Agregar Respuesta:</label>   </td><td>
+	<input id="id_respuesta" type="text" name="respuesta" />
+	<input id="id_idqui" type="hidden" name="idpre" value={{preg.idpre}} />
+   
+</td><td>
+		<input type="submit" value="Agregar" style="width:120px;height:40px;font-size:15px;font-family: 'Droid Sans', sans-serif;"/>
+	</form></td></tr></table>
+
+<table style="width:420px;font-family:'Droid Sans', sans-serif;font-size:16px;text-align:center;margin-left:auto;margin-right:auto;">
+<tr style="color:#AB1226">
+<th colspan =2 style="background-color:#D0D0D0;font-size:18px"> Respuestas de la pregunta </th>
+			</tr>
+<tr style="background-color:#A0A0A0;">
+<th>Respuestas</th><th>Eliminar</th></tr>
+{% for r in respuestas%}
+<tr style="background-color:#F0F0F0;"><td>
+{{r}}
+</td><td>
+<form action="/quiz/del_respuesta/" method="post"  onsubmit="return confirm('Estas seguro que deseas eliminar esta respuesta?');">
+	<input id="id_idres" type="hidden" name="idres" value="{{r.idres}}" />
+<input type="submit" value="Eliminar" style="width:80px;height:30px;font-size:15px;font-family: 'Droid Sans', sans-serif;"/>
+</form>
+</td></tr>
+
+{%endfor%}
+</table>
+
+<br>{{mensaje}}
+	
+
+<a href="/quiz/add_pregunta?idqui={{preg.idqui.idqui}}"> <img src="/media_axtel/images/back.png"> </a>
+
+{% endblock %}
