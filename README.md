@@ -12,6 +12,7 @@ Bitácora, es una herramienta que usan en varias áreas de atención al cliente 
 para que funcione correctamente hay que agregar a la Tabla de NIVEL dos registros:
 
 1 - Ingeniero
+
 2 - Administrador
 
 Para que un usuario tenga vision sobre todos los elementos, hay que cambiarle el nivel a un usuario de Administrador para poder observar todas las herramientas.
